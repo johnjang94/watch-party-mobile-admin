@@ -1,0 +1,25 @@
+{
+  "expo": {
+    "name": "Watch Party Admin",
+    "slug": "fifa-watch-party",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "ios": {
+      "bundleIdentifier": "com.watchparty.admin"
+    },
+    "android": {
+      "package": "com.watchparty.admin"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "b447f4ad-0d59-4a4e-aab3-f67bf7be9a2c"
+      }
+    },
+    "owner": "fifa-watch-party"
+  }
+}
