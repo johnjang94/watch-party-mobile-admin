@@ -10,10 +10,16 @@
       "web"
     ],
     "ios": {
-      "bundleIdentifier": "com.watchparty.admin"
+      "bundleIdentifier": "com.watchparty.admin",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "package": "com.watchparty.admin"
+    },
+    "web": {
+      "favicon": "./favicon_io/favicon-32x32.png"
     },
     "extra": {
       "eas": {

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { ImageBackground, StyleSheet, Text, TextInput, View } from "react-native";
-import heroImage from "../../watch-party-admin/image.png";
+import heroImage from "../../assets/image.png";
 import { authenticateAdmin } from "../lib/api";
 import PrimaryButton from "../components/PrimaryButton";
 

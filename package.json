@@ -2,7 +2,7 @@
   "name": "watch-party-admin-mobile",
   "private": true,
   "version": "0.1.0",
-  "main": "node_modules/expo/AppEntry.js",
+  "main": "index.js",
   "scripts": {
     "start": "expo start",
     "build": "expo export --platform web",
@@ -14,6 +14,7 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@babel/runtime": "^8.0.0",
     "@expo/metro-runtime": "~4.0.1",
     "expo": "~52.0.0",
     "react": "19.0.0",

@@ -40,7 +40,7 @@ export default function UserListScreen({ section, onBack }) {
       <ScrollView contentContainerStyle={styles.list}>
         {users.map((user) => (
           <View key={user.id} style={styles.card}>
-            <Image source={require("../../watch-party-admin/image.png")} style={styles.avatar} />
+            <Image source={require("../../assets/image.png")} style={styles.avatar} />
             <View style={styles.info}>
               <Text style={styles.name}>{user.firstName} {user.lastName}</Text>
               <Text style={styles.meta}>{user.phoneNumber}</Text>
