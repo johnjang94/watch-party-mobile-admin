@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { ImageBackground, StyleSheet, Text, TextInput, View } from "react-native";
-import heroImage from "../../assets/image.png";
+import { StyleSheet, Text, TextInput, View } from "react-native";
 import { authenticateAdmin } from "../lib/api";
 import PrimaryButton from "../components/PrimaryButton";
 
@@ -24,8 +23,9 @@ export default function HomeScreen({ onAuthenticated }) {
   }
 
   return (
-    <ImageBackground source={heroImage} resizeMode="cover" style={styles.hero}>
-      <View style={styles.overlay} />
+    <View style={styles.hero}>
+      <View style={styles.glowTop} />
+      <View style={styles.glowBottom} />
       <View style={styles.content}>
         <Text style={styles.eyebrow}>control room</Text>
         <Text style={styles.title}>Watch Party Admin</Text>
@@ -59,7 +59,7 @@ export default function HomeScreen({ onAuthenticated }) {
           <PrimaryButton label={isSubmitting ? "Authenticating..." : "Admin Login"} onPress={handleLogin} wide />
         </View>
       </View>
-    </ImageBackground>
+    </View>
   );
 }
 
@@ -67,14 +67,31 @@ const styles = StyleSheet.create({
   hero: {
     flex: 1,
     justifyContent: "flex-end",
+    backgroundColor: "#06120d",
+    position: "relative",
   },
-  overlay: {
-    ...StyleSheet.absoluteFillObject,
-    backgroundColor: "rgba(3, 8, 7, 0.58)",
+  glowTop: {
+    position: "absolute",
+    top: -120,
+    left: -120,
+    width: 280,
+    height: 280,
+    borderRadius: 999,
+    backgroundColor: "rgba(125, 240, 164, 0.16)",
+  },
+  glowBottom: {
+    position: "absolute",
+    right: -80,
+    bottom: 90,
+    width: 220,
+    height: 220,
+    borderRadius: 999,
+    backgroundColor: "rgba(255, 210, 77, 0.08)",
   },
   content: {
     padding: 20,
     gap: 12,
+    position: "relative",
   },
   eyebrow: {
     color: "#7df0a4",
