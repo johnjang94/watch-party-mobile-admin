@@ -1,5 +1,5 @@
-import React, { useMemo, useState } from "react";
-import { SafeAreaView, StatusBar, StyleSheet, View } from "react-native";
+import React, { useState } from "react";
+import { StatusBar, StyleSheet, View } from "react-native";
 import HomeScreen from "./src/screens/HomeScreen";
 import DashboardScreen from "./src/screens/DashboardScreen";
 import UserListScreen from "./src/screens/UserListScreen";
@@ -10,46 +10,39 @@ export default function App() {
   const [authSession, setAuthSession] = useState(null);
   const [dashboardSection, setDashboardSection] = useState("dashboard");
 
-  const Screen = useMemo(() => {
-    switch (route) {
-      case "dashboard":
-        return (
-          <DashboardScreen
-            onGoHome={() => setRoute("home")}
-            onOpenUsers={(section) => {
-              setDashboardSection(section);
-              setRoute(section);
-            }}
-            session={authSession}
-          />
-        );
-      case "new":
-      case "all":
-        return (
-          <UserListScreen
-            section={dashboardSection}
-            onBack={() => setRoute("dashboard")}
-          />
-        );
-      case "inquiry":
-        return <InquiryScreen onBack={() => setRoute("dashboard")} />;
-      default:
-        return (
-          <HomeScreen
-            onAuthenticated={(session) => {
-              setAuthSession(session);
-              setRoute("dashboard");
-            }}
-          />
-        );
-    }
-  }, [authSession, dashboardSection, route]);
+  let screen = (
+    <HomeScreen
+      onAuthenticated={(session) => {
+        setAuthSession(session);
+        setRoute("dashboard");
+      }}
+    />
+  );
+
+  if (route === "dashboard") {
+    screen = (
+      <DashboardScreen
+        onGoHome={() => setRoute("home")}
+        onOpenUsers={(section) => {
+          setDashboardSection(section);
+          setRoute(section);
+        }}
+        session={authSession}
+      />
+    );
+  } else if (route === "new" || route === "all") {
+    screen = (
+      <UserListScreen section={dashboardSection} onBack={() => setRoute("dashboard")} />
+    );
+  } else if (route === "inquiry") {
+    screen = <InquiryScreen onBack={() => setRoute("dashboard")} />;
+  }
 
   return (
-    <SafeAreaView style={styles.screen}>
+    <View style={styles.screen}>
       <StatusBar barStyle="light-content" />
-      <View style={styles.flex}>{Screen}</View>
-    </SafeAreaView>
+      <View style={styles.flex}>{screen}</View>
+    </View>
   );
 }
 
